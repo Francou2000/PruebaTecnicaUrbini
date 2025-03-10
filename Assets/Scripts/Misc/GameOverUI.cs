@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameOverUI : MonoBehaviour
 {
-    public Text finalScoreText;
-    public Text leaderboardText;
+    public TextMeshProUGUI finalScoreText;
+    public TextMeshProUGUI leaderboardText;
 
     void Start()
     {

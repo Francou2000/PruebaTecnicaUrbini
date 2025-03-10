@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         SaveScore();
-        SceneManager.LoadScene("GameOverScene");
+        SceneManager.LoadScene("GameOver");
     }
 
     void SaveScore()
