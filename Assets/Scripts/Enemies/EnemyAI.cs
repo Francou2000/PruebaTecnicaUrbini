@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -7,17 +8,19 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
-        GameObject p = GameObject.FindGameObjectWithTag("Player");
-        if (p) player = p.transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
         if (player == null) return;
 
-        Vector3 targetPos = player.position;
-        targetPos.y = transform.position.y;
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
-        transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+        Vector2 direction = (player.position - transform.position).normalized;
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360 * Time.deltaTime);
+
+        transform.position += transform.right * speed * Time.deltaTime;
     }
 }

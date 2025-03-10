@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class LevelUpManager : MonoBehaviour
 {
@@ -36,6 +37,8 @@ public class LevelUpManager : MonoBehaviour
     {
         Time.timeScale = 0f; 
         levelUpMenuUI.SetActive(true);
+
+        EventSystem.current.sendNavigationEvents = true;
     }
 
     public void ApplyLevelUp(bool increaseFireRate)

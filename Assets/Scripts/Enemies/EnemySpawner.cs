@@ -2,29 +2,48 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
-    public Transform[] spawnPoints;
-    public float spawnRate = 2f;
+    public GameObject[] enemyPrefabs;
+    public Transform player;
+    public float spawnRadius = 10f;
+    public float initialSpawnRate = 2f;
+    public float difficultyIncreaseRate = 10f; 
+    public float spawnRateDecrease = 0.1f; 
+    public int maxDifficultyLevel = 5;
 
-    public float difficultyIncreaseRate = 0.01f;
-
+    private float spawnRate;
+    private int difficultyLevel = 0;
+    
     void Start()
     {
-        InvokeRepeating("SpawnEnemy", 1f, spawnRate);
+        spawnRate = initialSpawnRate;
+        InvokeRepeating(nameof(SpawnEnemy), 1f, spawnRate);
+        InvokeRepeating(nameof(IncreaseDifficulty), difficultyIncreaseRate, difficultyIncreaseRate);
     }
 
     void SpawnEnemy()
     {
-        if (spawnPoints.Length == 0)
-            return;
+        if (enemyPrefabs.Length == 0 || player == null) return;
 
-        int index = Random.Range(0, spawnPoints.Length);
-        GameObject enemy = Instantiate(enemyPrefab, spawnPoints[index].position, Quaternion.identity);
-        float difficultyMultiplier = 1f + (Time.time * difficultyIncreaseRate);
-        Enemy enemyScript = enemy.GetComponent<Enemy>();
-        if (enemyScript != null)
+        Vector2 spawnPosition = (Vector2)player.position + Random.insideUnitCircle * spawnRadius;
+        Vector3 spawnPosition3D = new Vector3(spawnPosition.x, spawnPosition.y, 0);
+
+        int enemyIndex = Mathf.Clamp(difficultyLevel, 0, enemyPrefabs.Length - 1);
+        GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyIndex + 1)];
+
+        Instantiate(enemyPrefab, spawnPosition3D, Quaternion.identity);
+    }
+
+    void IncreaseDifficulty()
+    {
+        if (difficultyLevel < maxDifficultyLevel)
         {
-            enemyScript.ApplyDifficulty(difficultyMultiplier);
+            difficultyLevel++;
+            if (spawnRate > 0.5f) 
+            {
+                spawnRate -= spawnRateDecrease;
+                CancelInvoke(nameof(SpawnEnemy));
+                InvokeRepeating(nameof(SpawnEnemy), 0f, spawnRate);
+            }
         }
     }
 }

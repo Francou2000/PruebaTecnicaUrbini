@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
         enemyHealth = GetComponent<Health>();
         enemyAI = GetComponent<EnemyAI>();
         enemyShooting = GetComponent<EnemyShooting>();
+        GetComponent<SpriteRenderer>().flipY = true;
     }
 
     public void ApplyDifficulty(float multiplier)
