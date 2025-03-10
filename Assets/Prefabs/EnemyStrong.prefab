@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4195463864635284025}
   - component: {fileID: 7792887779692118099}
   - component: {fileID: 5281987558810833177}
+  - component: {fileID: 3430429748758008417}
   m_Layer: 0
   m_Name: EnemyStrong
   m_TagString: Enemy
@@ -184,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   levelUpOrbPrefab: {fileID: 7874162666183093903, guid: c1aac5531985d764f94d5fda45988f11, type: 3}
+  explosionPrefab: {fileID: 7797943111153332069, guid: 539d60885cca573479b5102b5862acd0, type: 3}
 --- !u!114 &5281987558810833177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,6 +201,28 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7855735444050395485, guid: 95d1e6cf879b1fe48a614a64ebcc9008, type: 3}
   firePoint: {fileID: 442860589899949245}
   fireRate: 1.5
+--- !u!95 &3430429748758008417
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3474501181228909812}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d5f629596815c149812d5d0e9713c09, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7024525755529825543
 GameObject:
   m_ObjectHideFlags: 0

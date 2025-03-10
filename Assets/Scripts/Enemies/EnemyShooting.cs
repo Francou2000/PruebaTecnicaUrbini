@@ -28,6 +28,8 @@ public class EnemyShooting : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyShootSound);
+
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         if (rb)
         {

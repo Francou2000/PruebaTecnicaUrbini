@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 815217336355439279}
   - component: {fileID: 2115418799120575678}
   - component: {fileID: 1114860289592680043}
+  - component: {fileID: 6421344144358476470}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -215,3 +216,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   levelUpOrbPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 7797943111153332069, guid: 539d60885cca573479b5102b5862acd0, type: 3}
+--- !u!95 &6421344144358476470
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033346173955515707}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2b0fde49776e03f44b75a4c6f7f85183, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -7,6 +7,7 @@ public class LevelUpOrb : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             LevelUpManager.Instance.CollectOrb();
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.pickUpSound);
             Destroy(gameObject);
         }
     }

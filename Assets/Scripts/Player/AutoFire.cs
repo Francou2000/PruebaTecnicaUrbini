@@ -22,6 +22,8 @@ public class AutoFire : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.playerShootSound);
+
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         if (bulletScript != null)
         {

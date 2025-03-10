@@ -5,7 +5,9 @@ public class Health : MonoBehaviour
     public int maxHealth = 100;
     private int currentHealth;
 
-    public GameObject levelUpOrbPrefab; 
+    public GameObject levelUpOrbPrefab;
+
+    public GameObject explosionPrefab;
 
     void Start()
     {
@@ -14,7 +16,16 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (CompareTag("Enemy"))
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyHitSound);
+        }
+        else if (CompareTag("Player"))
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.playerHitSound);
+        }
         currentHealth -= damage;
+
         if (currentHealth <= 0)
         {
             Die();
@@ -28,6 +39,8 @@ public class Health : MonoBehaviour
 
     void Die()
     {
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+
         if (CompareTag("Enemy"))
         {
             GameManager.Instance.AddScore(10);
